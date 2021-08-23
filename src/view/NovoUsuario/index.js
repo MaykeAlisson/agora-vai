@@ -1,26 +1,33 @@
 import React, { useState } from "react";
-import { SafeAreaView,Text, TextInput, View } from "react-native";
+import { Alert, Button, SafeAreaView, Text, TextInput, View } from "react-native";
+
+import Cores from "../../util/Cores";
 
 import styles from "./styles";
 
 const NovoUsuario = () => {
 
-  const [nome, setNome] = useState('');
+  const [nome, setNome] = useState("");
 
   return (
     <SafeAreaView>
-      <View>
         <Text style={styles.primeiroTitulo}>Ola,</Text>
         <Text style={styles.segundoTitulo}>Comece com o primeiro passo !</Text>
-      </View>
-      <View>
+      <View style={styles.sessionName}>
         <TextInput
           style={styles.inputNome}
-          onChangeText={setNome}
-          // value={nome}
           placeholder="Qual e seu nome ?"
+          autoCapitalize="sentences"
+          onChangeText={setNome}
+          value={nome}
         />
-        <Text style={styles.segundoTitulo}>Comece com o primeiro passo !</Text>
+        <View style={styles.btnCadastro}>
+          <Button
+            title={"Criar Conta"}
+            color={Cores.primary}
+            onPress={() => Alert.alert("oi")}
+          />
+        </View>
       </View>
     </SafeAreaView>
   );
