@@ -12,6 +12,8 @@ target 'agora_vai' do
     :hermes_enabled => false
   )
 
+  pod 'RNSVG', :path => '../node_modules/react-native-svg'
+
   target 'agora_vaiTests' do
     inherit! :complete
     # Pods for testing

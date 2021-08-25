@@ -4,6 +4,7 @@ import Cores from "../../util/Cores";
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     backgroundColor: Cores.backgroundHome,
   },
   nomeApp: {
@@ -36,6 +37,29 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: Cores.branco,
     fontWeight: "300",
+  },
+  containerDialog: {
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  inputNomeMeta: {
+    margin: 15,
+    borderWidth: 1,
+    padding: 10,
+  },
+  btnPlus: {
+    borderWidth: 1,
+    borderColor: 'rgba(0,0,0,0.2)',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 25,
+    position: 'absolute',
+    bottom: 5,
+    right: 50,
+    height: 25,
+    backgroundColor: Cores.branco,
+    borderRadius: 100,
   },
 });
 
