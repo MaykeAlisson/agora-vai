@@ -14,13 +14,13 @@ const NovoUsuario = () => {
 
   const criarDataBase = () => {
 
-    const path = RNFS.DocumentDirectoryPath + '/test.txt';
-    RNFS.readDir(RNFS.DocumentDirectoryPath)
+    const path = RNFS.ExternalDirectoryPath + '/test.txt';
+    RNFS.readDir(RNFS.ExternalDirectoryPath)
       .then((result) => {
         console.log('GOT RESULT', result);
       })
     // write the file
-    RNFS.writeFile(path, 'Lorem ipsum dolor sit amet', 'utf8')
+    RNFS.writeFile(path, 'tsteredercsctrscrstc', 'utf8')
       .then((success) => {
         console.log(success)
         console.log('FILE WRITTEN!');
