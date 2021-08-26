@@ -47,19 +47,11 @@ const styles = StyleSheet.create({
     margin: 15,
     borderWidth: 1,
     padding: 10,
+    borderRadius: 10,
   },
   btnPlus: {
-    borderWidth: 1,
-    borderColor: 'rgba(0,0,0,0.2)',
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: 25,
-    position: 'absolute',
-    bottom: 5,
-    right: 50,
-    height: 25,
-    backgroundColor: Cores.branco,
-    borderRadius: 100,
+    height: 40,
+    borderRadius: 10,
   },
 });
 

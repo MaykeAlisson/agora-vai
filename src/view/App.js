@@ -1,4 +1,4 @@
-import type { Node } from "react";
+import type { Node } from 'react';
 import React from "react";
 import { StyleSheet, SafeAreaView } from "react-native";
 
@@ -7,13 +7,13 @@ import Home from "./Home";
 
 const App: () => Node = () => {
 
-  const novoUsuario = false;
+  const novoUsuario = true;
 
   return (
     <SafeAreaView style={styles.container}>
       {
         novoUsuario
-          ? <NovoUsuario />
+          ? <NovoUsuario/>
           : <Home/>
       }
     </SafeAreaView>

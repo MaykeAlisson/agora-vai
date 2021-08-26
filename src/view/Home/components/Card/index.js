@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
-import { Alert, Text, TextInput, View } from "react-native";
-
-import Icon from "react-native-vector-icons/FontAwesome";
-import * as Progress from 'react-native-progress';
+import React, { useState } from "react";
+import { Text, TouchableOpacity, View } from "react-native";
+import MaterialIcons from "react-native-vector-icons/MaterialIcons";
+import * as Progress from "react-native-progress";
 import Dialog from "react-native-dialog";
 
 import styles from "./styles";
@@ -20,12 +19,12 @@ const Card = () => {
     <View style={styles.card}>
       <View style={styles.cardSessionTitulo}>
         <Text style={styles.textoTitulo}>Titulo Card</Text>
-        <Icon
-          name="remove"
-          size={18}
-          color="red"
+        <TouchableOpacity
+          style={styles.btnDelete}
           onPress={() => setVisible(true)}
-        />
+        >
+          <MaterialIcons name="delete" size={24} color="red" />
+        </TouchableOpacity>
       </View>
       <View style={styles.containerDialog}>
         <Dialog.Container visible={visible}>

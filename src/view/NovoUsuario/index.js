@@ -4,10 +4,33 @@ import { Alert, Button, SafeAreaView, Text, TextInput, View } from "react-native
 import Cores from "../../util/Cores";
 
 import styles from "./styles";
+import RNFS from "react-native-fs";
 
 const NovoUsuario = () => {
 
   const [nome, setNome] = useState("");
+
+  // const RNFS = require('react-native-fs');
+
+  const criarDataBase = () => {
+
+    const path = RNFS.DocumentDirectoryPath + '/test.txt';
+    RNFS.readDir(RNFS.DocumentDirectoryPath)
+      .then((result) => {
+        console.log('GOT RESULT', result);
+      })
+    // write the file
+    RNFS.writeFile(path, 'Lorem ipsum dolor sit amet', 'utf8')
+      .then((success) => {
+        console.log(success)
+        console.log('FILE WRITTEN!');
+        console.log(path);
+       RNFS.exists(path).then((result)=>{console.log(result)}).catch((error)=>{console.log(error)});
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
 
   return (
     <SafeAreaView>
@@ -25,7 +48,7 @@ const NovoUsuario = () => {
           <Button
             title={"Criar Conta"}
             color={Cores.primary}
-            onPress={() => Alert.alert("oi")}
+            onPress={() => criarDataBase()}
           />
         </View>
       </View>

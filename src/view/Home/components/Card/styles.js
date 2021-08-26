@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
 import Cores from "../../../../util/Cores";
 
@@ -6,27 +6,27 @@ const styles = StyleSheet.create({
   card: {
     margin: 50,
     flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'space-between',
+    flexDirection: "column",
+    justifyContent: "space-between",
     backgroundColor: Cores.branco,
     borderRadius: 10,
   },
   cardSessionTitulo: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    margin: 20
+    flexDirection: "row",
+    justifyContent: "space-around",
+    margin: 20,
   },
   textoTitulo: {
-    fontWeight: '600',
+    fontWeight: "600",
     fontSize: 18,
   },
   cardSessionInfo: {
-    flexDirection: 'column',
+    flexDirection: "column",
     margin: 20,
-    alignItems: 'center'
+    alignItems: "center",
   },
   textoProgresso: {
-    fontWeight: '500',
+    fontWeight: "500",
     fontSize: 17,
   },
   barraProgresso: {
@@ -36,6 +36,10 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
+  },
+  btnDelete: {
+    height: 40,
+    borderRadius: 10,
   },
 });
 

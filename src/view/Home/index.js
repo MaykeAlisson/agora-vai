@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Alert, SafeAreaView, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
+import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import Dialog from "react-native-dialog";
 
 import styles from "./styles";
@@ -28,12 +29,9 @@ const Home = () => {
         <Text style={styles.textoData}>Terça 10 de Dezembro de 2021</Text>
           <TouchableOpacity
             style={styles.btnPlus}
+            onPress={() => setVisible(true)}
           >
-            <Icon
-              name='plus'
-              size={18} color='#000'
-              onPress={() => setVisible(true)}
-            />
+            <MaterialIcons name="add-task" size={25} color="black" />
           </TouchableOpacity>
       </View>
       </View>
