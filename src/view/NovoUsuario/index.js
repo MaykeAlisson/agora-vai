@@ -2,34 +2,33 @@ import React, { useState } from "react";
 import { Alert, Button, SafeAreaView, Text, TextInput, View } from "react-native";
 
 import Cores from "../../util/Cores";
-
 import styles from "./styles";
+import isEmpty from "../../util/isEmpty";
 import RNFS from "react-native-fs";
+import Constantes from "../../util/Constantes";
 
 const NovoUsuario = () => {
 
   const [nome, setNome] = useState("");
 
-  // const RNFS = require('react-native-fs');
-
   const criarDataBase = () => {
 
-    const path = RNFS.ExternalDirectoryPath + '/test.txt';
-    RNFS.readDir(RNFS.ExternalDirectoryPath)
-      .then((result) => {
-        console.log('GOT RESULT', result);
+    if (isEmpty(nome)){
+      Alert.alert('Nome invalido');
+      return;
+    }
+
+    let db = {};
+    db.nome = nome;
+
+    RNFS.writeFile(Constantes.path, JSON.stringify(db), 'utf8')
+      .then(sucess => {
+      
       })
-    // write the file
-    RNFS.writeFile(path, 'tsteredercsctrscrstc', 'utf8')
-      .then((success) => {
-        console.log(success)
-        console.log('FILE WRITTEN!');
-        console.log(path);
-       RNFS.exists(path).then((result)=>{console.log(result)}).catch((error)=>{console.log(error)});
-      })
-      .catch((err) => {
-        console.log(err.message);
+      .catch(error => {
+        console.log('ESCRITA ARQUIVO - ' + error);
       });
+
   };
 
   return (
