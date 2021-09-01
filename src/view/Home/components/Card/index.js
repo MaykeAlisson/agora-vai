@@ -4,11 +4,12 @@ import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import * as Progress from "react-native-progress";
 import Dialog from "react-native-dialog";
 
+import PropTypes from 'prop-types';
+
 import styles from "./styles";
 
-const Card = () => {
+const Card = ({task}) => {
 
-  const [nome, setNome] = useState("Mayke");
   const [visible, setVisible] = useState(false);
 
   const deletarTarefa = () => {
@@ -16,9 +17,9 @@ const Card = () => {
   };
 
   return (
-    <View style={styles.card}>
+    <View key={`${task.nome}-${task.criacao}`} style={styles.card}>
       <View style={styles.cardSessionTitulo}>
-        <Text style={styles.textoTitulo}>Titulo Card</Text>
+        <Text style={styles.textoTitulo}>{task.nome}</Text>
         <TouchableOpacity
           style={styles.btnDelete}
           onPress={() => setVisible(true)}
@@ -30,7 +31,7 @@ const Card = () => {
         <Dialog.Container visible={visible}>
           <Dialog.Title>Deletar Meta</Dialog.Title>
           <Dialog.Description>
-            Deseja mesmo deletar essa meta ?
+            Deseja deletar {task.nome} ?
           </Dialog.Description>
           <Dialog.Button label="Cancelar" onPress={() => setVisible(false)} />
           <Dialog.Button label="Deletar" onPress={deletarTarefa} />
@@ -42,6 +43,14 @@ const Card = () => {
       </View>
     </View>
   );
+};
+
+Card.propType = {
+  task: PropTypes.object,
+};
+
+Card.defaultProps = {
+  task: {},
 };
 
 export default Card;

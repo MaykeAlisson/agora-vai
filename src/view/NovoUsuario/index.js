@@ -4,8 +4,7 @@ import { Alert, Button, SafeAreaView, Text, TextInput, View } from "react-native
 import Cores from "../../util/Cores";
 import styles from "./styles";
 import isEmpty from "../../util/isEmpty";
-import RNFS from "react-native-fs";
-import Constantes from "../../util/Constantes";
+import gravarEmArquivo from "../../util/File/gravarEmArquivo";
 
 const NovoUsuario = () => {
 
@@ -20,14 +19,13 @@ const NovoUsuario = () => {
 
     let db = {};
     db.nome = nome;
+    db.metas = [];
 
-    RNFS.writeFile(Constantes.path, JSON.stringify(db), 'utf8')
-      .then(sucess => {
-      
-      })
-      .catch(error => {
-        console.log('ESCRITA ARQUIVO - ' + error);
-      });
+    try {
+      gravarEmArquivo(db);
+    } catch (e) {
+      Alert.alert('Error: ', e);
+    }
 
   };
 

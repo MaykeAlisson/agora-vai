@@ -50,6 +50,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   btnPlus: {
+    marginTop: 10,
     height: 40,
     borderRadius: 10,
   },
