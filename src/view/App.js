@@ -21,6 +21,7 @@ const App: () => Node = () => {
         if (result){
           RNFS.readFile(Constantes.path)
             .then(dados => {
+              console.log(dados);
               let obj = JSON.parse(dados);
               if(isNotEmpty(obj.nome)){
                 setNovoUsuario(false);

@@ -4,7 +4,7 @@ import { Alert, Button, SafeAreaView, Text, TextInput, View } from "react-native
 import Cores from "../../util/Cores";
 import styles from "./styles";
 import isEmpty from "../../util/isEmpty";
-import gravarEmArquivo from "../../util/File/gravarEmArquivo";
+import gravarArquivo from "../../util/File/gravarArquivo";
 
 const NovoUsuario = () => {
 
@@ -22,7 +22,7 @@ const NovoUsuario = () => {
     db.metas = [];
 
     try {
-      gravarEmArquivo(db);
+      gravarArquivo(db);
     } catch (e) {
       Alert.alert('Error: ', e);
     }

@@ -9,8 +9,9 @@ import Card from "./components/Card";
 import RNFS from "react-native-fs";
 import Constantes from "../../util/Constantes";
 import isEmpty from "../../util/isEmpty";
-import gravarEmArquivo from "../../util/File/gravarEmArquivo";
+import gravarEmArquivo from "../../util/File/gravarArquivo";
 import isNotEmpty from "../../util/isNotEmpty";
+import gravarArquivo from "../../util/File/gravarArquivo";
 
 const Home = () => {
 
@@ -46,12 +47,12 @@ const Home = () => {
         return;
       }
 
+      let temp = db;
       let obj = {};
       obj.nome = nomeMeta;
       obj.tasks = [];
       obj.criacao = "2021-09-01";
 
-      let temp = db;
       temp.metas.push(obj);
       setDb(temp);
       gravarEmArquivo(temp);
@@ -70,7 +71,18 @@ const Home = () => {
         element => element.nome.toLowerCase() === nomeMeta.toLowerCase(),
       ),
     );
-  }
+  };
+
+  const deletaMeta = (nome) => {
+    let newArray = tarefas.filter( (el) => {
+      return el.nome !== nome;
+    });
+    let obj = db;
+    obj.metas = newArray;
+    setDb(obj);
+    setTarefas(newArray);
+    gravarArquivo(obj);
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -92,7 +104,10 @@ const Home = () => {
       <ScrollView horizontal={true}>
         {
           tarefas.map( task => (
-            <Card key={`${task.nome}-${task.criacao}`} task={task}/>
+            <Card key={`${task.nome}-${task.criacao}`}
+                  task={task}
+                  deletar={(meta) => deletaMeta(meta)}
+            />
             )
           )
         }

@@ -8,11 +8,12 @@ import PropTypes from 'prop-types';
 
 import styles from "./styles";
 
-const Card = ({task}) => {
+const Card = ({task, deletar}) => {
 
   const [visible, setVisible] = useState(false);
 
-  const deletarTarefa = () => {
+  const deletarTarefa = (nome) => {
+    deletar(nome);
     setVisible(false);
   };
 
@@ -34,7 +35,7 @@ const Card = ({task}) => {
             Deseja deletar {task.nome} ?
           </Dialog.Description>
           <Dialog.Button label="Cancelar" onPress={() => setVisible(false)} />
-          <Dialog.Button label="Deletar" onPress={deletarTarefa} />
+          <Dialog.Button label="Deletar" onPress={() => deletarTarefa(task.nome)} />
         </Dialog.Container>
       </View>
       <View style={styles.cardSessionInfo}>
@@ -47,10 +48,12 @@ const Card = ({task}) => {
 
 Card.propType = {
   task: PropTypes.object,
+  deletar: PropTypes.func
 };
 
 Card.defaultProps = {
   task: {},
+  default: () => {},
 };
 
 export default Card;
