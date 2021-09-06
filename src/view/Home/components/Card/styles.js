@@ -5,6 +5,7 @@ import Cores from "../../../../util/Cores";
 const styles = StyleSheet.create({
   card: {
     margin: 50,
+    display: 'flex',
     flex: 1,
     flexDirection: "column",
     justifyContent: "space-between",
@@ -19,6 +20,11 @@ const styles = StyleSheet.create({
   textoTitulo: {
     fontWeight: "600",
     fontSize: 18,
+  },
+  cardBody: {
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    flex: 1,
   },
   cardSessionInfo: {
     flexDirection: "column",

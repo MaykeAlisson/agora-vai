@@ -11,22 +11,18 @@ const NovoUsuario = () => {
   const [nome, setNome] = useState("");
 
   const criarDataBase = () => {
-
     if (isEmpty(nome)){
       Alert.alert('Nome invalido');
       return;
     }
-
     let db = {};
     db.nome = nome;
     db.metas = [];
-
     try {
       gravarArquivo(db);
     } catch (e) {
       Alert.alert('Error: ', e);
     }
-
   };
 
   return (

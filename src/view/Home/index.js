@@ -12,6 +12,8 @@ import isEmpty from "../../util/isEmpty";
 import gravarEmArquivo from "../../util/File/gravarArquivo";
 import isNotEmpty from "../../util/isNotEmpty";
 import gravarArquivo from "../../util/File/gravarArquivo";
+import getDataHome from "../../util/getDataHome";
+import getFrase from "../../util/getFrase";
 
 const Home = () => {
 
@@ -22,8 +24,9 @@ const Home = () => {
 
   useEffect(() => {loadObj()}, []);
 
-  const loadObj = () => {
-    RNFS.readFile(Constantes.path)
+  const loadObj = async () => {
+    console.log('LoadObj');
+    await RNFS.readFile(Constantes.path)
       .then(dados => {
         let obj = JSON.parse(dados);
         setDb(obj);
@@ -36,6 +39,7 @@ const Home = () => {
   };
 
   const createTarefa = () => {
+    console.log('CreateTarefa');
     if (isEmpty(nomeMeta)) {
       Alert.alert('Nome invalido');
       return;
@@ -74,11 +78,14 @@ const Home = () => {
   };
 
   const deletaMeta = (nome) => {
+    console.log('DeletaMeta');
     let newArray = tarefas.filter( (el) => {
       return el.nome !== nome;
     });
-    let obj = db;
-    obj.metas = newArray;
+    const obj = {
+      nome: db.nome,
+      metas: newArray
+    };
     setDb(obj);
     setTarefas(newArray);
     gravarArquivo(obj);
@@ -89,9 +96,9 @@ const Home = () => {
       <View style={{flex: 1}}>
       <Text style={styles.nomeApp}>Agora Vai!</Text>
       <Text style={styles.titulo}>Ola, {db.nome} </Text>
-      <Text style={styles.frase}>Frase motivacional aleatoria</Text>
+      <Text style={styles.frase}>{getFrase}</Text>
       <View style={styles.sessionNew}>
-        <Text style={styles.textoData}>Terça 10 de Dezembro de 2021</Text>
+        <Text style={styles.textoData}>{getDataHome}</Text>
           <TouchableOpacity
             style={styles.btnPlus}
             onPress={() => setVisible(true)}

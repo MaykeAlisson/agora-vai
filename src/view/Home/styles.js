@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     paddingHorizontal: 24,
     fontSize: 18,
-    color: Cores.grey,
+    color: Cores.DimGray,
     fontWeight: "300",
   },
   sessionNew: {
